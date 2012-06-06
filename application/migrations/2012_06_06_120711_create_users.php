@@ -26,7 +26,7 @@ class Create_Users {
 			'firstname'	=> 'Rob',
 			'surname'	=> 'Meijer',
 			'email'		=> 'rob.meijer@worldstores.co.uk',
-			'roll_id'	=> 9
+			'role_id'	=> 9
 		));
 		
 		DB::table('users')->insert(array(
@@ -35,7 +35,7 @@ class Create_Users {
 			'firstname'	=> 'Matthew',
 			'surname'	=> 'Ward',
 			'email'		=> 'matthew.ward@worldstores.co.uk',
-			'roll_id'	=> 1
+			'role_id'	=> 1
 		));
 	}
 
