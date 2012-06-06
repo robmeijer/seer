@@ -12,19 +12,30 @@ class Create_Users {
 		Schema::create('users', function($table) {
 			$table->increments('id');
 			$table->string('username', 128);
+			$table->string('password', 64);
 			$table->string('firstname', 128);
 			$table->string('surname', 128);
 			$table->string('email', 128);
-			$table->string('password', 64);
+			$table->integer('role_id');
 			$table->timestamps();
 		});
 
 		DB::table('users')->insert(array(
 			'username'	=> 'admin',
+			'password'	=> Hash::make('admin'),
 			'firstname'	=> 'Rob',
 			'surname'	=> 'Meijer',
 			'email'		=> 'rob.meijer@worldstores.co.uk',
-			'password'	=> Hash::make('admin')
+			'roll_id'	=> 9
+		));
+		
+		DB::table('users')->insert(array(
+			'username'	=> 'matt',
+			'password'	=> Hash::make('matt'),
+			'firstname'	=> 'Matthew',
+			'surname'	=> 'Ward',
+			'email'		=> 'matthew.ward@worldstores.co.uk',
+			'roll_id'	=> 1
 		));
 	}
 
