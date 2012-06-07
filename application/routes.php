@@ -2,14 +2,11 @@
 
 // Routes for Dashboard_Controller
 Route::get('/', 'dashboard@index');
+Route::controller('dashboard');
 
 
 // Routes for Admin_Controller
 Route::controller('admin');
-
-
-// Routes for Dashboard_Controller
-Route::controller('dashboard');
 
 
 
@@ -85,4 +82,9 @@ Route::filter('csrf', function()
 Route::filter('auth', function()
 {
 	if (Auth::guest()) return Redirect::to('admin/login');
+});
+
+Route::filter('role', function($role_id)
+{
+	if ($role_id > Auth::user()->role_id) return Redirect::to('/');
 });
