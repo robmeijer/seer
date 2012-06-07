@@ -7,6 +7,8 @@
 </div>
 @endif
 
+<h1>Admin - Log In</h1>
+
 {{ Form::open('admin/login', 'POST', array('class' => 'offset2 span6 well well-large form-inline')) }}
 	{{ Form::text('username', Input::old('username'), array('class' => 'span2', 'placeholder' => 'Username')) }}
 	{{ Form::password('password', array('class' => 'span2', 'placeholder' => 'Password')) }}
