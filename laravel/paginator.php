@@ -65,7 +65,7 @@ class Paginator {
 	 *
 	 * @var string
 	 */
-	protected $dots = '<span class="dots">...</span>';
+	protected $dots = '<li class="disabled"><a href="#">...</a></li>';
 
 	/**
 	 * Create a new Paginator instance.
@@ -185,7 +185,7 @@ class Paginator {
 
 		$content = $this->previous().' '.$links.' '.$this->next();
 
-		return '<div class="pagination">'.$content.'</div>';
+		return '<div class="pagination"><ul>'.$content.'</ul></div>';
 	}
 
 	/**
@@ -300,7 +300,8 @@ class Paginator {
 		// the "first" element should be a span instead of a link.
 		if ($disabled($this->page, $this->last))
 		{
-			return HTML::span($text, array('class' => "{$class} disabled"));
+			// return HTML::span($text, array('class' => "{$class} disabled"));
+			return '<li class="disabled"><a href="#">' . $text . '</a></li>';
 		}
 		else
 		{
@@ -349,7 +350,8 @@ class Paginator {
 		{
 			if ($this->page == $page)
 			{
-				$pages[] = HTML::span($page, array('class' => 'current'));
+				// $pages[] = HTML::span($page, array('class' => 'current'));
+				$pages[] = '<li class="active"><a href="#">' . $page . '</a></li>';
 			}
 			else
 			{
@@ -372,7 +374,7 @@ class Paginator {
 	{
 		$query = '?page='.$page.$this->appendage($this->appends);
 
-		return HTML::link(URI::current().$query, $text, compact('class'), Request::secure());
+		return '<li>' . HTML::link(URI::current().$query, $text, compact('class'), Request::secure()) . '</li>';
 	}
 
 	/**

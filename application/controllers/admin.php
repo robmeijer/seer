@@ -145,7 +145,7 @@ class Admin_Controller extends Base_Controller {
 	public function get_items()
 	{
 
-		$items = Item::paginate();
+		$items = Item::paginate(1);
 
 		$this->layout->page_title		= "Admin - All items";
 		$this->layout->page_content	= View::make('admin.items')->with('items', $items);

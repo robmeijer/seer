@@ -6,7 +6,7 @@
 </ul>
 
 <h1>Admin - Items</h1>
-
+{{ $items->links() }}
 <table class="table table-striped table-bordered table-condensed">
 <thead>
 <tr>
@@ -30,4 +30,5 @@ font-style: italic
 @endforeach
 </tbody>
 </table>
+{{ $items->links() }}
 @endsection
