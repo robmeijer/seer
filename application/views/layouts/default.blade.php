@@ -23,12 +23,11 @@
 					<a href="#"
 						class="dropdown-toggle"
 						data-toggle="dropdown">
-						Standard User
+						Items
 						<b class="caret"></b>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="{{ URL::to_action('admin@index') }}" title="Standard User Item 1">Standard User Item 1</a></li>
-						<li><a href="{{ URL::to_action('admin@index') }}" title="Standard User Item 2">Standard User Item 2</a></li>
+						<li><a href="{{ URL::to_action('admin@items') }}" title="All items">All items</a></li>
 					</ul>
 				</li>
 			</ul>

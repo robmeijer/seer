@@ -142,4 +142,13 @@ class Admin_Controller extends Base_Controller {
 			->with('update_success', true);
 	}
 
+	public function get_items()
+	{
+
+		$items = Item::paginate();
+
+		$this->layout->page_title		= "Admin - All items";
+		$this->layout->page_content	= View::make('admin.items')->with('items', $items);
+	}
+
 }
