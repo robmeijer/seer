@@ -7,7 +7,7 @@
 </div>
 @endif
 <h1>Admin - Change Password</h1>
-{{ Form::open('admin/update', 'POST', array('class' => 'span6 well well-large form-horizontal')) }}
+{{ Form::open('admin/users/password', 'POST', array('class' => 'span6 well well-large form-horizontal')) }}
 <div class="control-group">
 	{{ Form::label('current_password', 'Current password', array('class' => 'control-label')) }}
 	<div class="controls">

@@ -14,7 +14,7 @@
 </div>
 @endif
 <h1>Admin - Edit User</h1>
-{{ Form::open('admin/user/edit', 'POST', array('class' => 'span6 well well-large form-horizontal')) }}
+{{ Form::open('admin/users/edit', 'POST', array('class' => 'span6 well well-large form-horizontal')) }}
 <div class="control-group">
 	{{ Form::label('firstname', 'Firstname', array('class' => 'control-label')) }}
 	<div class="controls">
