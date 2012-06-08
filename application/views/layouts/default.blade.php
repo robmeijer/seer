@@ -15,7 +15,7 @@
 @if (Auth::check())
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
-		<div class="container">
+		<div class="container-fluid">
 			<a class="brand" href="/">WorldStores</a>
 			@if (Auth::check())
 			<ul class="nav">
@@ -27,7 +27,7 @@
 						<b class="caret"></b>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="{{ URL::to_action('admin@items') }}" title="All items">All items</a></li>
+						<li><a href="{{ URL::to_action('admin.items@all') }}" title="All items">All items</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -42,8 +42,8 @@
 						<b class="caret"></b>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="{{ URL::to_action('admin@secure') }}" title="Admin Secure Item 1">Admin Secure Item 1</a></li>
-						<li><a href="{{ URL::to_action('admin@create') }}" title="Create User">Create User</a></li>
+						<li><a href="{{ URL::to_action('admin.users@add') }}" title="Add User">Add User</a></li>
+						<li><a href="{{ URL::to_action('admin.users@all') }}" title="All Users">View All Users</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -55,14 +55,14 @@
 					<span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu">
-					<li><a href="{{ URL::to_action('admin@profile') }}" title="View Profile"><i class="icon-list-alt"></i> View Profile</a></li>
-					<li><a href="{{ URL::to_action('admin@update') }}" title="Change Password"><i class="icon-lock"></i> Change Password</a></li>
+					<li><a href="{{ URL::to_action('admin.users@view') }}" title="View Profile"><i class="icon-list-alt"></i> View Profile</a></li>
+					<li><a href="{{ URL::to_action('admin.users@password') }}" title="Change Password"><i class="icon-lock"></i> Change Password</a></li>
 					<li class="divider"></li>
-					<li><a href="{{ URL::to_action('admin@logout') }}" title="Log Out"><i class="icon-off"></i> Log Out</a></li>
+					<li><a href="{{ URL::to_action('admin.auth@logout') }}" title="Log Out"><i class="icon-off"></i> Log Out</a></li>
 				</ul>
 			</div>
 			@else
-			<p class="navbar-text pull-right">{{ HTML::link_to_action('admin@login', 'You are not logged in') }}</p>
+			<p class="navbar-text pull-right">{{ HTML::link_to_action('admin.auth@login', 'You are not logged in') }}</p>
 			@endif
 		</div>
 	</div>

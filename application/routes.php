@@ -6,7 +6,10 @@ Route::controller('dashboard');
 
 
 // Routes for Admin_Controller
-Route::controller('admin');
+Route::get('admin', 'admin.auth@login');
+Route::controller('admin.auth');
+Route::controller('admin.user');
+Route::controller('admin.items');
 
 
 
@@ -81,7 +84,7 @@ Route::filter('csrf', function()
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::to('admin/login');
+	if (Auth::guest()) return Redirect::to('admin/auth/login');
 });
 
 Route::filter('role', function($role_id)
