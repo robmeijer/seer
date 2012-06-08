@@ -8,7 +8,7 @@ Route::controller('dashboard');
 // Routes for Admin_Controller
 Route::get('admin', 'admin.auth@login');
 Route::controller('admin.auth');
-Route::controller('admin.user');
+Route::controller('admin.users');
 Route::controller('admin.items');
 
 
