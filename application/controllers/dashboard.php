@@ -2,9 +2,6 @@
 
 class Dashboard_Controller extends Base_Controller {
 
-	public $layout = 'layouts.default';
-	public $restful = true;
-
 	public function __construct()
 	{
 		parent::__construct();

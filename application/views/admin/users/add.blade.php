@@ -2,15 +2,8 @@
 @if (Session::has('flash'))
 <div class="alert alert-block alert-{{ Session::get('flash_type') }}">
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
-	<h4 class="alert-heading">CREATE FAILURE</h4>
+	<h4 class="alert-heading">{{ strtoupper(Session::get('flash_type')) }}</h4>
 	{{ Session::get('flash_msg') }}
-</div>
-@endif
-@if (Session::has('create_success'))
-<div class="alert alert-block alert-success">
-	<button type="button" class="close" data-dismiss="alert">&times;</button>
-	<h4 class="alert-heading">CREATE SUCCESS</h4>
-	New user successfully created.
 </div>
 @endif
 <h1>Admin - Add User</h1>
@@ -48,7 +41,11 @@
 <div class="control-group">
 	{{ Form::label('email', 'Email', array('class' => 'control-label')) }}
 	<div class="controls">
-		{{ Form::text('email',Input::old('email'), array('class' => 'span2', 'placeholder' => 'Email')) }}
+		<div class="input-prepend">
+			<span class="add-on">
+				<i class="icon-envelope"></i>
+			</span>{{ Form::text('email',Input::old('email'), array('class' => 'span2', 'placeholder' => 'Email')) }}
+		</div>
 	</div>
 </div>
 <div class="control-group">

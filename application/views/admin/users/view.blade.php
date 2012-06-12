@@ -1,16 +1,9 @@
 @section('page_content')
-@if (Session::has('update_successful'))
-<div class="alert alert-block alert-success">
+@if (Session::has('flash'))
+<div class="alert alert-block alert-{{ Session::get('flash_type') }}">
 	<button type="button" class="close" data-dismiss="alert">×</button>
-	<h4 class="alert-heading">SUCCESS</h4>
-	You have changed your password successfully.
-</div>
-@endif
-@if (Session::has('update_success'))
-<div class="alert alert-block alert-success">
-	<button type="button" class="close" data-dismiss="alert">×</button>
-	<h4 class="alert-heading">SUCCESS</h4>
-	You have updated your profile successfully.
+	<h4 class="alert-heading">{{ strtoupper(Session::get('flash_type')) }}</h4>
+	{{ Session::get('flash_msg') }}
 </div>
 @endif
 <h1>Admin - Profile</h1>

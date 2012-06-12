@@ -2,18 +2,14 @@
 
 class Admin_Auth_Controller extends Base_Controller {
 
-	public $layout = 'layouts.default';
-	public $restful = true;
-
 	public function __construct()
 	{
 		parent::__construct();
-		$this->filter('before', 'auth')->except(array('login'));
 	}
 
 	public function get_index()
 	{
-		return Redirect::to('admin/auth/login');
+		return Redirect::to_action('admin.auth@login');
 	}
 
 	public function get_login()
@@ -25,7 +21,7 @@ class Admin_Auth_Controller extends Base_Controller {
 		}
 		else
 		{
-			return Redirect::to('/');
+			return Redirect::home();
 		}
 	}
 
@@ -39,18 +35,27 @@ class Admin_Auth_Controller extends Base_Controller {
 
 		if (Auth::attempt($credentials))
 		{
-			return Redirect::to('admin')->with('login_successful', true);;
+			return
+				Redirect::home()
+				->with('flash', true)
+				->with('flash_type', 'success')
+				->with('flash_msg', 'Logged in successfully.');
 		}
 		else
 		{
-			return Redirect::to('admin/auth/login')->with_input()->with('login_errors', true);
+			return
+				Redirect::back()->
+				with_input()
+				->with('flash', true)
+				->with('flash_type', 'error')
+				->with('flash_msg', 'Incorrect username or password.');
 		}
 	}
 
 	public function get_logout()
 	{
 		Auth::logout();
-		return Redirect::to('/');
+		return Redirect::home();
 	}
 
 }

@@ -1,13 +1,14 @@
 <?php
 
-class Base_Controller extends Controller {
+class Admin_Controller extends Controller {
 
-	public $layout = 'layouts.base';
+	public $layout = 'layouts.admin';
 	public $restful = true;
 
 	public function __construct()
 	{
 		parent::__construct();
+		$this->filter('before', 'auth');
 	}
 
 	/**

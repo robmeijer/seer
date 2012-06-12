@@ -1,23 +1,7 @@
-<!DOCTYPE HTML>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-
-	<title>{{ $page_title }}</title>
-
-	{{ HTML::style('css/bootstrap.css') }}
-	@if (Auth::check())
-	{{ HTML::style('css/default.css') }}
-	@endif
-	{{ HTML::style('css/bootstrap-responsive.css') }}
-</head>
-<body>
-@if (Auth::check())
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container-fluid">
-			<a class="brand" href="/">WorldStores</a>
-			@if (Auth::check())
+			<a class="brand" href="/">Seer</a>
 			<ul class="nav">
 				<li class="dropdown">
 					<a href="#"
@@ -31,8 +15,7 @@
 					</ul>
 				</li>
 			</ul>
-			@endif
-			@if (Auth::check() && Auth::user()->role_id == 10)
+			@if (Auth::user()->role_id == 10)
 			<ul class="nav">
 				<li class="dropdown">
 					<a href="#"
@@ -67,11 +50,3 @@
 		</div>
 	</div>
 </div>
-@endif
-<div class="container">
-	@yield('page_content')
-</div>
-	{{ HTML::script('js/jquery.js') }}
-	{{ HTML::script('js/bootstrap.js') }}
-</body>
-</html>

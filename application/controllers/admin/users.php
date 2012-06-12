@@ -1,20 +1,16 @@
 <?php
 
-class Admin_Users_Controller extends Base_Controller {
-
-	public $layout = 'layouts.default';
-	public $restful = true;
+class Admin_Users_Controller extends Admin_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->filter('before', 'auth');
 		$this->filter('before', 'role:9')->only(array('add', 'all'));
 	}
 
 	public function get_index()
 	{
-		return Redirect::to('admin/users/view');
+		return Redirect::to_action('admin.users@view');
 	}
 
 	public function get_view()
@@ -44,7 +40,7 @@ class Admin_Users_Controller extends Base_Controller {
 			$user->password = Hash::make(Input::get('new_password'));
 			$user->save();
 			return
-				Redirect::to('admin/users/view')
+				Redirect::to_action('admin.users@view')
 				->with('flash', true)
 				->with('flash_type', 'success')
 				->with('flash_msg', 'Password changed successfully.');
@@ -52,7 +48,7 @@ class Admin_Users_Controller extends Base_Controller {
 		else
 		{
 			return
-				Redirect::to('admin/users/password')
+				Redirect::to_action('admin.users@password')
 				->with('flash', true)
 				->with('flash_type', 'error')
 				->with('flash_msg', 'There was an error changing your password.');
@@ -109,7 +105,7 @@ class Admin_Users_Controller extends Base_Controller {
 		$user->email = Input::get('email');
 		$user->save();
 		return
-			Redirect::to('admin/users/view')
+			Redirect::to_action('admin.users@view')
 			->with('flash', true)
 			->with('flash_type', 'success')
 			->with('flash_msg', 'User profile updated successfully.');

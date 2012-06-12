@@ -84,10 +84,10 @@ Route::filter('csrf', function()
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::to('admin/auth/login');
+	if (Auth::guest()) return Redirect::to('admin');
 });
 
 Route::filter('role', function($role_id)
 {
-	if ($role_id > Auth::user()->role_id) return Redirect::to('/');
+	if ($role_id > Auth::user()->role_id) return Redirect::home();
 });

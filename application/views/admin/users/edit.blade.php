@@ -1,16 +1,9 @@
 @section('page_content')
-@if (Session::has('create_errors'))
-<div class="alert alert-block alert-error">
-	<button type="button" class="close" data-dismiss="alert">×</button>
-	<h4 class="alert-heading">CREATE FAILURE</h4>
-	Failed to create new user - passwords do not match.
-</div>
-@endif
-@if (Session::has('create_success'))
-<div class="alert alert-block alert-success">
-	<button type="button" class="close" data-dismiss="alert">×</button>
-	<h4 class="alert-heading">CREATE SUCCESS</h4>
-	New user successfully created.
+@if (Session::has('flash'))
+<div class="alert alert-block alert-{{ Session::get('flash_type') }}">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<h4 class="alert-heading">{{ strtoupper(Session::get('flash_type')) }}</h4>
+	{{ Session::get('flash_msg') }}
 </div>
 @endif
 <h1>Admin - Edit User</h1>
