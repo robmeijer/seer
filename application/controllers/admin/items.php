@@ -14,11 +14,12 @@ class Admin_Items_Controller extends Admin_Controller {
 
 	public function get_all()
 	{
+		$count = Item::count();
 		$page = Input::get('page', 1);
 		$per_page = 20;
 		$total = 200;
 		$extra = 4;
-		$total = $page * $per_page <= $total - $per_page * $extra ? $total : ($page + $extra) * $per_page;
+		$total = $page * $per_page < ($total - $per_page) * $extra ? $count : ($page + $extra) * $per_page;
 		$cache = 'items_'.$page.'_'.$per_page;
 		if (Cache::has($cache))
 		{
