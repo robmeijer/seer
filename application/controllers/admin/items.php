@@ -16,10 +16,11 @@ class Admin_Items_Controller extends Admin_Controller {
 	{
 		$count = Item::count();
 		$page = Input::get('page', 1);
+		$num_pages = 10;
 		$per_page = 20;
-		$total = 200;
-		$extra = 4;
-		$total = $page * $per_page < ($total - $per_page) * $extra ? $count : ($page + $extra) * $per_page;
+		$extra_pages = 4;
+		$start_total = $num_pages * $per_page > $count ? $count : $num_pages * $per_page;
+		$total = $page * $per_page < $start_total - $per_page * $extra_pages ? $start_total : (($page + $extra_pages) * $per_page > $count ? $count : ($page + $extra_pages) * $per_page);
 		$cache = 'items_'.$page.'_'.$per_page;
 		if (Cache::has($cache))
 		{
