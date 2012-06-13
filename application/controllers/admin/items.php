@@ -14,7 +14,9 @@ class Admin_Items_Controller extends Admin_Controller {
 
 	public function get_all()
 	{
-		$count = Item::count();
+		$count = Cache::remember('items_count', function() {
+			return Item::count();
+		}, 30);
 		$page = Input::get('page', 1);
 		$num_pages = 10;
 		$per_page = 20;
