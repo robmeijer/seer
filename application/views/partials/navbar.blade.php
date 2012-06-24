@@ -37,10 +37,10 @@
 					<span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu">
-					<li><a href="{{ URL::to_action('admin.users@view') }}" title="View Profile"><i class="icon-list-alt"></i> View Profile</a></li>
-					<li><a href="{{ URL::to_action('admin.users@password') }}" title="Change Password"><i class="icon-lock"></i> Change Password</a></li>
+					<li><a href="{{ URL::to_action('admin.users@view') }}" title="View Profile"><i class="icon-list-alt"></i> View profile</a></li>
+					<li><a href="{{ URL::to_action('admin.users@password') }}" title="Change Password"><i class="icon-lock"></i> Change password</a></li>
 					<li class="divider"></li>
-					<li><a href="{{ URL::to_action('admin.auth@logout') }}" title="Log Out"><i class="icon-off"></i> Log Out</a></li>
+					<li><a href="{{ URL::to_action('admin.auth@logout') }}" title="Log Out"><i class="icon-off"></i> Log out</a></li>
 				</ul>
 			</div>
 			@else
