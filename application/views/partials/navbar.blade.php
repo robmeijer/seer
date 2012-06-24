@@ -2,7 +2,7 @@
 	<div class="navbar-inner">
 		<div class="container-fluid">
 			<a class="brand" href="/">Seer</a>
-			<ul class="nav">
+			<!-- <ul class="nav">
 				<li class="dropdown">
 					<a href="#"
 						class="dropdown-toggle"
@@ -14,7 +14,7 @@
 						<li><a href="{{ URL::to_action('admin.items@all') }}" title="All items">All items</a></li>
 					</ul>
 				</li>
-			</ul>
+			</ul> -->
 			@if (Auth::user()->role_id == 10)
 			<ul class="nav">
 				<li class="dropdown">
@@ -25,8 +25,7 @@
 						<b class="caret"></b>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="{{ URL::to_action('admin.users@add') }}" title="Add User">Add User</a></li>
-						<li><a href="{{ URL::to_action('admin.users@all') }}" title="All Users">View All Users</a></li>
+						<li><a href="{{ URL::to_action('admin.users@all') }}" title="Users">Users</a></li>
 					</ul>
 				</li>
 			</ul>

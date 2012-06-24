@@ -10,19 +10,21 @@ class Admin_Users_Controller extends Admin_Controller {
 
 	public function get_index()
 	{
-		return Redirect::to_action('admin.users@view');
+		return Redirect::to_action('admin.users@all');
 	}
 
-	public function get_view()
+	public function get_view($id = NULL)
 	{
+		$id = !$id ? Auth::user()->id : $id;
+		$user = User::find($id);
 		$this->layout->page_title		= "Admin - Users - View";
-		$this->layout->page_content	= View::make('admin.users.view');
+		$this->layout->page_content	= View::make('admin.users.view')->with('user', $user);
 	}
 
 	public function get_all()
 	{
 		$users = User::get();
-		$this->layout->page_title		= "Admin - Users - All";
+		$this->layout->page_title		= "Admin - All users";
 		$this->layout->page_content	= View::make('admin.users.all')->with('users', $users);
 	}
 
@@ -57,7 +59,7 @@ class Admin_Users_Controller extends Admin_Controller {
 
 	public function get_add()
 	{
-		$this->layout->page_title		= "Admin - Add User";
+		$this->layout->page_title		= "Admin - Add user";
 		$this->layout->page_content	= View::make('admin.users.add');
 	}
 
@@ -91,21 +93,23 @@ class Admin_Users_Controller extends Admin_Controller {
 
 	}
 
-	public function get_edit()
+	public function get_edit($id = NULL)
 	{
+		$id = !$id ? Auth::user()->id : $id;
+		$user = User::find($id);
 		$this->layout->page_title		= "Admin - Edit User";
-		$this->layout->page_content	= View::make('admin.users.edit');
+		$this->layout->page_content	= View::make('admin.users.edit')->with('user', $user);
 	}
 
 	public function post_edit()
 	{
-		$user = Auth::user();
+		$user = User::find(Input::get('id'));
 		$user->firstname = Input::get('firstname');
 		$user->surname = Input::get('surname');
 		$user->email = Input::get('email');
 		$user->save();
 		return
-			Redirect::to_action('admin.users@view')
+			Redirect::to_action('admin.users@view', array($user->id))
 			->with('flash', true)
 			->with('flash_type', 'success')
 			->with('flash_msg', 'User profile updated successfully.');
