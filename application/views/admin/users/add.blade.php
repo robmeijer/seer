@@ -1,22 +1,8 @@
 @section('page_content')
 <div class="row-fluid">
-	<div class="span2 well well-small">
-		<ul class="nav nav-list">
-			<li class="nav-header">Users</li>
-			<li><a href="{{ URL::to_action('admin.users@all') }}">View all users</a></li>
-			<li class="active"><a href="{{ URL::to_action('admin.users@add') }}">Add user</a></li>
-		</ul>
-	</div>
+	{{ render('partials.menu-users') }}
 	<div class="span10">
-		
-		@if (Session::has('flash'))
-		<div class="alert alert-block alert-{{ Session::get('flash_type') }}">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			<h4 class="alert-heading">{{ strtoupper(Session::get('flash_type')) }}</h4>
-			{{ Session::get('flash_msg') }}
-		</div>
-		@endif
-
+		{{ render('partials.flashmsg') }}
 		<ul class="breadcrumb">
 			<li>{{ HTML::link_to_action('admin.auth@login','Home') }} <span class="divider">/</span></li>
 			<li>{{ HTML::link_to_action('admin.users@all','Users') }} <span class="divider">/</span></li>
@@ -73,7 +59,6 @@
 			</div>
 		</div>
 		{{ Form::close() }}
-
 	</div>
 </div>
 @endsection
