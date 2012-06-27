@@ -5,7 +5,7 @@ class Admin_Users_Controller extends Admin_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->filter('before', 'role:9')->only(array('add', 'all'));
+		$this->filter('before', 'role:9')->only(array('add', 'all', 'delete'));
 	}
 
 	public function get_index()
@@ -15,7 +15,7 @@ class Admin_Users_Controller extends Admin_Controller {
 
 	public function get_view($id = NULL)
 	{
-		$id = !$id ? Auth::user()->id : $id;
+		$id = $id ?: Auth::user()->id;
 		$user = User::find($id);
 		$this->layout->page_title		= "Admin - Users - View";
 		$this->layout->page_content	= View::make('admin.users.view')->with('user', $user);
@@ -24,7 +24,7 @@ class Admin_Users_Controller extends Admin_Controller {
 	public function get_all()
 	{
 		$users = User::get();
-		$this->layout->page_title		= "Admin - All users";
+		$this->layout->page_title		= "User Management";
 		$this->layout->page_content	= View::make('admin.users.all')->with('users', $users);
 	}
 
@@ -76,7 +76,7 @@ class Admin_Users_Controller extends Admin_Controller {
 			$user->role_id = Input::get('role_id');
 			$user->save();
 			return
-				Redirect::to('admin/users/add')
+				Redirect::to('admin/users/all')
 				->with('flash', true)
 				->with('flash_type', 'success')
 				->with('flash_msg', 'New user created successfully.');
@@ -95,7 +95,8 @@ class Admin_Users_Controller extends Admin_Controller {
 
 	public function get_edit($id = NULL)
 	{
-		$id = !$id ? Auth::user()->id : $id;
+		// $id = !$id ? Auth::user()->id : $id;
+		$id = $id ?: Auth::user()->id;
 		$user = User::find($id);
 		$this->layout->page_title		= "Admin - Edit User";
 		$this->layout->page_content	= View::make('admin.users.edit')->with('user', $user);
@@ -113,6 +114,17 @@ class Admin_Users_Controller extends Admin_Controller {
 			->with('flash', true)
 			->with('flash_type', 'success')
 			->with('flash_msg', 'User profile updated successfully.');
+	}
+
+	public function post_delete()
+	{
+		$user = User::find(Input::get('id'));
+		$user->delete();
+		return
+			Redirect::to_action('admin.users@all')
+			->with('flash', true)
+			->with('flash_type', 'success')
+			->with('flash_msg', 'User deleted successfully.');
 	}
 
 }

@@ -9,7 +9,9 @@
 		</ul>
 		<div class="row-fluid">
 			<div class="span6">
-				<h1>Edit profile</h1>
+				<h1>Update User</h1>
+				<em>Please update the following information.</em>
+				<hr>
 				{{ Form::open('admin/users/edit', 'POST', array('class' => 'well well-large form-horizontal')) }}
 				<div class="control-group">
 					{{ Form::label('firstname', 'Firstname', array('class' => 'control-label')) }}
@@ -31,7 +33,8 @@
 				</div>
 				<div class="control-group">
 					<div class="controls">
-						{{ Form::button('Update profile', array('class' => 'btn btn-primary', 'type' => 'submit')) }}
+						{{ Form::button('Save Changes', array('class' => 'btn btn-primary btn-large', 'type' => 'submit')) }}
+						<a href="{{ URL::to_action('admin.users@view', array($user->id)) }}" class="btn btn-large" title="Cancel">Cancel</a>
 					</div>
 				</div>
 				{{ Form::hidden('id', $user->id) }}

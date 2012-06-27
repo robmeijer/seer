@@ -34,7 +34,7 @@
 					</tr>
 					<tr>
 						<th></th>
-						<td>{{ HTML::link('admin/users/edit', 'Edit profile', array('class' => 'btn btn-primary')) }}</td>
+						<td>{{ HTML::link('admin/users/edit/' . $user->id, 'Edit profile', array('class' => 'btn btn-primary')) }}</td>
 					</tr>
 				</tbody>
 				</table>
