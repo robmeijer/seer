@@ -57,8 +57,8 @@
 				</div>
 			</div>
 		</div>
-		{{ Form::button('Add User', array('class' => 'btn btn-large btn-primary', 'type' => 'submit')) }}
-		<a href="{{ URL::to_action('admin.users@all') }}" class="btn btn-large" title="Cancel">Cancel</a>
+		{{ Form::button('Add User', array('class' => 'btn btn-primary', 'type' => 'submit')) }}
+		<a href="{{ URL::to_action('admin.users@all') }}" class="btn" title="Cancel">Cancel</a>
 		{{ Form::close() }}
 	</div>
 </div>

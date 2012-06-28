@@ -3,7 +3,6 @@
 	{{ render('partials.menu-users') }}
 	<div class="span10">
 		{{ render('partials.flashmsg') }}
-		
 		<ul class="breadcrumb">
 			<li>{{ HTML::link_to_action('admin.auth@login','Home') }} <span class="divider">/</span></li>
 			<li class="active">Users</li>
@@ -36,8 +35,8 @@
 						<td>{{ $user->role_id }}</td>
 						<td>
 							<div class="btn-group">
-								<a href="{{ URL::to_action('admin.users@edit', array($user->id)) }}" class="btn" title="Edit user"><i class="icon-edit"></i></a>
-								<a class="btn btn-danger" data-toggle="modal" data-id="{{$user->id}}" href="#del-confirmation" onclick="$('#user-id').val($(this).data('id'))"><i class="icon-remove icon-white"></i></a>
+								<a href="{{ URL::to_action('admin.users@edit', array($user->id)) }}" class="btn btn-small" title="Edit user"><i class="icon-edit"></i></a>
+								<a class="btn btn-danger" data-toggle="modal" data-id="{{$user->id}}" href="#del-confirmation" onclick="$('#user-id').val($(this).data('id'))" title="Delete user"><i class="icon-remove icon-white"></i></a>
 							</div></td>
 					</tr>
 					@endforeach

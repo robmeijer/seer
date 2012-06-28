@@ -33,8 +33,8 @@
 				</div>
 				<div class="control-group">
 					<div class="controls">
-						{{ Form::button('Save Changes', array('class' => 'btn btn-primary btn-large', 'type' => 'submit')) }}
-						<a href="{{ URL::to_action('admin.users@view', array($user->id)) }}" class="btn btn-large" title="Cancel">Cancel</a>
+						{{ Form::button('Save Changes', array('class' => 'btn btn-primary', 'type' => 'submit')) }}
+						<a href="{{ URL::to_action('admin.users@view', array($user->id)) }}" class="btn" title="Cancel">Cancel</a>
 					</div>
 				</div>
 				{{ Form::hidden('id', $user->id) }}
