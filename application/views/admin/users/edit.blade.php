@@ -1,6 +1,6 @@
 @section('page_content')
 <div class="row-fluid">
-	{{ render('partials.menu-users') }}
+	{{ render('partials.menus.users') }}
 	<div class="span10">
 		{{ render('partials.flashmsg') }}
 		<ul class="breadcrumb">
