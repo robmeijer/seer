@@ -1,12 +1,8 @@
 @section('page_content')
 <div class="row-fluid">
-	{{ render('partials.menus.users') }}
-	<div class="span10">
+	<div class="span12">
 		{{ render('partials.flashmsg') }}
-		<ul class="breadcrumb">
-			<li>{{ HTML::link_to_action('admin.auth@login','Home') }} <span class="divider">/</span></li>
-			<li class="active">View profile</li>
-		</ul>
+				
 		<div class="row-fluid">
 			<div class="span5">
 				<h1>View profile</h1>
@@ -42,7 +38,4 @@
 		</div>
 	</div>
 </div>
-
-
-
 @endsection

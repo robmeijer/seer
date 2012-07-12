@@ -1,14 +1,8 @@
 @section('page_content')
 <div class="row-fluid">
-	{{ render('partials.menus.users') }}
-	<div class="span10">
+	<div class="span12">
 		{{ render('partials.flashmsg') }}
-		<ul class="breadcrumb">
-			<li>{{ HTML::link_to_action('admin.auth@login','Home') }} <span class="divider">/</span></li>
-			<li>{{ HTML::link_to_action('admin.users@all','Users') }} <span class="divider">/</span></li>
-			<li class="active">Add User</li>
-		</ul>
-
+		
 		<h1>Add User</h1>
 		<em>Please supply the following information.</em>
 		<hr>
@@ -57,7 +51,7 @@
 				</div>
 			</div>
 		</div>
-		{{ Form::button('Add User', array('class' => 'btn btn-primary', 'type' => 'submit')) }}
+		{{ Form::button('Save', array('class' => 'btn btn-primary', 'type' => 'submit')) }}
 		<a href="{{ URL::to_action('admin.users@all') }}" class="btn" title="Cancel">Cancel</a>
 		{{ Form::close() }}
 	</div>

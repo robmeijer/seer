@@ -9,6 +9,7 @@ Route::controller('dashboard');
 Route::get('admin', 'admin.auth@login');
 Route::controller('admin.auth');
 Route::controller('admin.users');
+Route::controller('admin.categories');
 Route::controller('admin.items');
 
 

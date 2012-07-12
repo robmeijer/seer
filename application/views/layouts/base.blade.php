@@ -17,7 +17,7 @@
 {{ render('partials.navbar') }}
 @endif
 
-<div class="container-fluid">
+<div class="container">
 	@yield('page_content')
 </div>
 

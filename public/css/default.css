@@ -1,7 +1,6 @@
 .alert {
 	position: absolute;
-	right: 131px;
-	top: 131px;
+	width: 68em;
 	-webkit-animation: fadeOut 5s linear forwards;
 	-moz-animation: fadeOut 5s linear forwards;
 	-o-animation: fadeOut 5s linear forwards;

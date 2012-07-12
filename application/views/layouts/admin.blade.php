@@ -13,7 +13,7 @@
 <body>
 {{ render('partials.navbar') }}
 
-<div class="container-fluid">
+<div class="container">
 	@yield('page_content')
 </div>
 
