@@ -1,23 +1,22 @@
 <?php
 
-class Admin_Categories_Controller extends Admin_Controller {
+class Frontend_Categories_Controller extends Base_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->filter('before', 'role:9')->only(array('delete'));
 	}
 
 	public function get_index()
 	{
-		return Redirect::to_action('admin.categories@all');
+		return Redirect::home();
 	}
 
-	public function get_view($id)
+	public function get_view($slug)
 	{
-		$category = Category::find($id);
-		$this->layout->page_title		= "Admin - Categories - View";
-		$this->layout->page_content	= View::make('admin.categories.view')->with('category', $category);
+		$category = Category::where('slug', '=', $slug)->first();
+		$this->layout->page_title		= "Frontend - Categories - View";
+		$this->layout->page_content	= View::make('frontend.categories.view')->with('category', $category);
 	}
 
 	public function get_all()

@@ -13,6 +13,8 @@ Route::controller('admin.categories');
 Route::controller('admin.items');
 
 
+// Routes for Categories_Controller
+Route::get('c/(:any).htm', 'frontend.categories@view');
 
 
 /*
