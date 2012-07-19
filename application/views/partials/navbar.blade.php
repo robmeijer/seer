@@ -3,6 +3,18 @@
 		<div class="container-fluid">
 			<a class="brand" href="/">Seer</a>
 			<ul class="nav">
+				<li><a href="{{ URL::to_action('admin.dashboard@index') }}" title="Dashboard">Dashboard</a></li>
+				<li class="dropdown">
+					<a href="#"
+						class="dropdown-toggle"
+						data-toggle="dropdown">
+						Catalogue
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="{{ URL::to_action('admin.categories@all') }}" title="Categories">Categories</a></li>
+					</ul>
+				</li>
 				@if (Auth::user()->role_id == 10)
 				<li class="dropdown">
 					<a href="#"
@@ -16,17 +28,6 @@
 					</ul>
 				</li>
 				@endif
-				<li class="dropdown">
-					<a href="#"
-						class="dropdown-toggle"
-						data-toggle="dropdown">
-						Catalogue
-						<b class="caret"></b>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="{{ URL::to_action('admin.categories@all') }}" title="Categories">Categories</a></li>
-					</ul>
-				</li>
 			</ul>
 			@if (Auth::check())
 			<div class="btn-group pull-right">

@@ -1,8 +1,8 @@
 <?php
 
-class Base_Controller extends Controller {
+class Frontend_Controller extends Controller {
 
-	public $layout = 'layouts.base';
+	public $layout = 'layouts.frontend';
 	public $restful = true;
 
 	public function __construct()

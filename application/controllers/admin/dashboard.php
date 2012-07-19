@@ -1,6 +1,6 @@
 <?php
 
-class Dashboard_Controller extends Base_Controller {
+class Admin_Dashboard_Controller extends Admin_Controller {
 
 	public function __construct()
 	{
@@ -10,7 +10,7 @@ class Dashboard_Controller extends Base_Controller {
 	public function get_index()
 	{
 		$this->layout->page_title = "Dashboard";
-		$this->layout->page_content = View::make('dashboard.index');
+		$this->layout->page_content = View::make('admin.dashboard.index');
 	}
 
 }

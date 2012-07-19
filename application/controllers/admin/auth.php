@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Auth_Controller extends Base_Controller {
+class Admin_Auth_Controller extends Frontend_Controller {
 
 	public function __construct()
 	{
@@ -21,7 +21,7 @@ class Admin_Auth_Controller extends Base_Controller {
 		}
 		else
 		{
-			return Redirect::home();
+			return Redirect::to_action('admin.dashboard@index');
 		}
 	}
 
@@ -36,7 +36,7 @@ class Admin_Auth_Controller extends Base_Controller {
 		if (Auth::attempt($credentials))
 		{
 			return
-				Redirect::home()
+				Redirect::to_action('admin.dashboard@index');
 				->with('flash', true)
 				->with('flash_type', 'success')
 				->with('flash_msg', 'Logged in successfully.');

@@ -59,7 +59,7 @@ Laravel\Autoloader::$aliases = $aliases;
 */
 
 Autoloader::map(array(
-	'Base_Controller' => path('app').'controllers/base.php',
+	'Frontend_Controller' => path('app').'controllers/frontend.php',
 	'Admin_Controller' => path('app').'controllers/admin.php',
 ));
 

@@ -1,16 +1,16 @@
 <?php
 
-// Routes for Dashboard_Controller
-Route::get('/', 'dashboard@index');
-Route::controller('dashboard');
-
+// Routes for Home_Controller
+Route::get('/', 'frontend.home@index');
 
 // Routes for Admin_Controller
 Route::get('admin', 'admin.auth@login');
+Route::get('admin/dashboard', 'admin.dashboard@index');
 Route::controller('admin.auth');
-Route::controller('admin.users');
 Route::controller('admin.categories');
+Route::controller('admin.dashboard');
 Route::controller('admin.items');
+Route::controller('admin.users');
 
 
 // Routes for Categories_Controller

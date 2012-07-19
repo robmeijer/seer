@@ -9,7 +9,7 @@ class Admin_Items_Controller extends Admin_Controller {
 
 	public function get_index()
 	{
-		return Redirect::to('admin/items/all');
+		return Redirect::to_action('admin.items@all');
 	}
 
 	public function get_all()
