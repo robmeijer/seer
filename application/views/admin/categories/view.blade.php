@@ -13,8 +13,8 @@
 						<td>{{ $category->name }}</td>
 					</tr>
 					<tr>
-						<th>Description</th>
-						<td>{{ $category->description }}</td>
+						<th>Short description</th>
+						<td>{{ $category->short_description }}</td>
 					</tr>
 					<tr>
 						<th>Slug</th>

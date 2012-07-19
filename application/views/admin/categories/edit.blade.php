@@ -8,15 +8,15 @@
 		<hr>
 		{{ Form::open('admin/categories/edit', 'POST', array('class' => 'well well-large form-horizontal')) }}
 		<div class="control-group">
-			{{ Form::label('name', 'name', array('class' => 'control-label')) }}
+			{{ Form::label('name', 'Name', array('class' => 'control-label')) }}
 			<div class="controls">
 				{{ Form::text('name',$category->name, array('placeholder' => 'Name')) }}
 			</div>
 		</div>
 		<div class="control-group">
-			{{ Form::label('description', 'Description', array('class' => 'control-label')) }}
+			{{ Form::label('short_description', 'Short description', array('class' => 'control-label')) }}
 			<div class="controls">
-				{{ Form::textarea('description',$category->description, array('placeholder' => 'Description')) }}
+				{{ Form::textarea('short_description',$category->short_description, array('placeholder' => 'Short description')) }}
 			</div>
 		</div>
 				<div class="control-group">

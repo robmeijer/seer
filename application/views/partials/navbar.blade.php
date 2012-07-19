@@ -12,7 +12,8 @@
 						<b class="caret"></b>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="{{ URL::to_action('admin.categories@all') }}" title="Categories">Categories</a></li>
+						<li><a href="{{ URL::to_action('admin.categories@all') }}" title="All Categories">Categories - All</a></li>
+						<li><a href="{{ URL::to_action('admin.categories@list') }}" title="Tree Categories">Categories - Tree</a></li>
 					</ul>
 				</li>
 				@if (Auth::user()->role_id == 10)

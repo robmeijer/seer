@@ -7,6 +7,7 @@
 		<em>Manage categories.</em>
 		<a class="btn btn-primary pull-right" href="{{ URL::to_action('admin.categories@add', array($parent)) }}" title="Add Category"><i class="icon-plus-sign icon-white"></i> Add Category</a>
 		<hr>
+		@if (count($categories))
 		<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
@@ -33,6 +34,9 @@
 			@endforeach
 		</tbody>
 		</table>
+		@else
+			<p>There are no sub-categories. <a href="{{ URL::to_action('admin.categories@list') }}" title="Top categories">Back to top.</a> | <a href="{{ URL::to_action('admin.categories@list', array($grandparent)) }}" title="Top categories">Back to parent.</a></p>
+		@endif
 		<div class="modal hide" id="del-confirmation">
 			{{ Form::open('admin/categories/delete') }}
 			<input type="hidden" id="category-id" name="id" value="">

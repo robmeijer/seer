@@ -15,12 +15,13 @@
 				</div>
 			</div>
 			<div class="control-group">
-				{{ Form::label('description', 'Description', array('class' => 'control-label')) }}
+				{{ Form::label('short_description', 'Short description', array('class' => 'control-label')) }}
 				<div class="controls">
-					{{ Form::textarea('description', Input::old('description'), array('placeholder' => 'Description')) }}
+					{{ Form::textarea('short_description', Input::old('short_description'), array('placeholder' => 'Short description')) }}
 				</div>
 			</div>
 		</div>
+		{{ Form::hidden('parent', $parent) }}
 		{{ Form::button('Save', array('class' => 'btn btn-primary', 'type' => 'submit')) }}
 		<a href="{{ URL::to_action('admin.categories@all') }}" class="btn" title="Cancel">Cancel</a>
 		{{ Form::close() }}

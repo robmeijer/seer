@@ -24,21 +24,42 @@ class Admin_Categories_Controller extends Admin_Controller {
 	{
 		$categories = Category::get();
 		$this->layout->page_title		= "Category Management";
-		$this->layout->page_content	= View::make('admin.categories.all')->with('categories', $categories);
+		$this->layout->page_content	= View::make('admin.categories.all')
+		->with('categories', $categories)
+		->with('parent', 0);
 	}
 
-	public function get_add()
+	public function get_list($id = 0)
+	{
+		$categories = Category::where('parent', '=', $id)->get();
+		$grandparent = 0;
+		if ($id)
+		{
+			$category = Category::find($id);
+			$grandparent = Category::find($category->parent);
+		}
+		
+		$this->layout->page_title		= "Admin - Categories - List";
+		$this->layout->page_content	= View::make('admin.categories.list')
+		->with('categories', $categories)
+		->with('parent', $id)
+		->with('grandparent', $grandparent);
+	}
+
+	public function get_add($parent)
 	{
 		$this->layout->page_title		= "Admin - Add Category";
-		$this->layout->page_content	= View::make('admin.categories.add');
+		$this->layout->page_content	= View::make('admin.categories.add')
+		->with('parent', $parent);
 	}
 
 	public function post_add()
 	{
 		$category = new Category;
 		$category->name = Input::get('name');
-		$category->description = Input::get('description');
+		$category->short_description = Input::get('short_description');
 		$category->slug = Str::slug(Input::get('name'), '_');
+		$category->parent = Input::get('parent');
 		$category->save();
 		return
 			Redirect::to('admin/categories/all')
@@ -58,7 +79,7 @@ class Admin_Categories_Controller extends Admin_Controller {
 	{
 		$category = Category::find(Input::get('id'));
 		$category->name = Input::get('name');
-		$category->description = Input::get('description');
+		$category->short_description = Input::get('short_description');
 		$category->slug = Str::slug(Input::get('name'), '_');
 		$category->save();
 		return

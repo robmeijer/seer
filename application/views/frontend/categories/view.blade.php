@@ -6,7 +6,7 @@
 		<div class="row-fluid">
 			<div class="span12">
 				<h1>{{ $category->name }}</h1>
-				{{ $category->description }}
+				{{ $category->short_description }}
 			</div>
 		</div>
 	</div>
