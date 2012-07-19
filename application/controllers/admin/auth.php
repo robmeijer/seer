@@ -36,7 +36,7 @@ class Admin_Auth_Controller extends Frontend_Controller {
 		if (Auth::attempt($credentials))
 		{
 			return
-				Redirect::to_action('admin.dashboard@index');
+				Redirect::to_action('admin.dashboard@index')
 				->with('flash', true)
 				->with('flash_type', 'success')
 				->with('flash_msg', 'Logged in successfully.');
