@@ -12,8 +12,31 @@
 						<b class="caret"></b>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="{{ URL::to_action('admin.categories@all') }}" title="All Categories">Categories - All</a></li>
-						<li><a href="{{ URL::to_action('admin.categories@list') }}" title="Tree Categories">Categories - Tree</a></li>
+						<li><a href="{{ URL::to_action('admin.categories@list') }}" title="Attributes">Attributes</a></li>
+						<li><a href="{{ URL::to_action('admin.categories@list') }}" title="Categories">Categories</a></li>
+						<li><a href="{{ URL::to_action('admin.categories@list') }}" title="Products">Products</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#"
+						class="dropdown-toggle"
+						data-toggle="dropdown">
+						Design
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="{{ URL::to_action('admin.categories@list') }}" title="Layouts">Layouts</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#"
+						class="dropdown-toggle"
+						data-toggle="dropdown">
+						Reports
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="{{ URL::to_action('admin.categories@list') }}" title="Sales">Sales</a></li>
 					</ul>
 				</li>
 				@if (Auth::user()->role_id == 10)
@@ -25,6 +48,7 @@
 						<b class="caret"></b>
 					</a>
 					<ul class="dropdown-menu">
+						<li><a href="{{ URL::to_action('admin.users@all') }}" title="Settings">Settings</a></li>
 						<li><a href="{{ URL::to_action('admin.users@all') }}" title="Users">Users</a></li>
 					</ul>
 				</li>

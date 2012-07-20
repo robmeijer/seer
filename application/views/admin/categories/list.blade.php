@@ -2,29 +2,42 @@
 <div class="row-fluid">
 	<div class="span12">
 		{{ render('partials.flashmsg') }}
-		
-		<h1>Category Management</h1>
+
+		<h1>Categories</h1>
 		<em>Manage categories.</em>
 		<a class="btn btn-primary pull-right" href="{{ URL::to_action('admin.categories@add', array($parent)) }}" title="Add Category"><i class="icon-plus-sign icon-white"></i> Add Category</a>
 		<hr>
-		@if (count($categories))
+		<ul class="breadcrumb">
+			@if ($category_name == "Top")
+			<li class="active">Top</li>
+			@else
+			<li><a href="{{ URL::to_action('admin.categories@list') }}" title="Top">Top</a> <span class="divider">/</span></li>
+			@if ($grandparent != NULL)
+			<li><a href="{{ URL::to_action('admin.categories@list', array($grandparent)) }}" title="{{ $grandparent_name }}">{{ $grandparent_name }}</a> <span class="divider">/</span></li>
+			@endif
+			<li class="active">{{ $category_name }}</li>
+			@endif
+		</ul>
+		
+		
 		<table class="table table-striped table-bordered">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>NAME</th>
-				<th>SHORT DESCRIPTION</th>
-				<th>SLUG</th>
-				<th>ACTIONS</th>
-			</tr>
-		</thead>
 		<tbody>
+			@if (count($categories))
 			@foreach ($categories as $category)
 			<tr>
-				<td>{{ $category->id }}</td>
-				<td><a href="{{ URL::to_action('admin.categories@list', array($category->id)) }}" title="View category">{{ $category->name }}</a> (<a href="{{ URL::to_action('frontend.categories@view', array($category->slug)) }}" title="View in frontend">View in frontend</a>)</td>
-				<td>{{ $category->short_description }}</td>
-				<td>{{ $category->slug }}</td>
+				<td>
+					<button
+						type="button"
+						class="btn"
+						data-toggle="collapse"
+						data-target="#demo{{ $category->id }}">
+						<i class="icon-question-sign"></i>
+					</button> <a href="{{ URL::to_action('admin.categories@list', array($category->id)) }}" title="View category">{{ $category->name }}</a>
+				<div id="demo{{ $category->id }}" class="collapse">
+					<hr>
+					{{ $category->short_description }}
+				</div>
+				</td>
 				<td>
 					<div class="btn-group">
 						<a href="{{ URL::to_action('admin.categories@edit', array($category->id)) }}" class="btn btn-small" title="Edit category"><i class="icon-edit"></i></a>
@@ -32,11 +45,13 @@
 					</div></td>
 			</tr>
 			@endforeach
+			@else
+			<tr>
+				<td colspan="2">No categories available.</td>
+			</tr>
+			@endif
 		</tbody>
 		</table>
-		@else
-			<p>There are no sub-categories. <a href="{{ URL::to_action('admin.categories@list') }}" title="Top categories">Back to top.</a> | <a href="{{ URL::to_action('admin.categories@list', array($grandparent)) }}" title="Top categories">Back to parent.</a></p>
-		@endif
 		<div class="modal hide" id="del-confirmation">
 			{{ Form::open('admin/categories/delete') }}
 			<input type="hidden" id="category-id" name="id" value="">

@@ -32,18 +32,28 @@ class Admin_Categories_Controller extends Admin_Controller {
 	public function get_list($id = 0)
 	{
 		$categories = Category::where('parent', '=', $id)->get();
-		$grandparent = 0;
+		$grandparent = NULL;
+		$grandparent_name = NULL;
+		$category_name = "Top";
 		if ($id)
 		{
 			$category = Category::find($id);
-			$grandparent = Category::find($category->parent);
+			$grandparent = $category->parent != 0 ?: NULL;
+			if ($grandparent != 0)
+			{
+				$grandparent_name = Category::find($grandparent)->name;
+			}
+			$category_name = $category->name;
 		}
 		
 		$this->layout->page_title		= "Admin - Categories - List";
 		$this->layout->page_content	= View::make('admin.categories.list')
+		
 		->with('categories', $categories)
 		->with('parent', $id)
-		->with('grandparent', $grandparent);
+		->with('grandparent', $grandparent)
+		->with('grandparent_name', $grandparent_name)
+		->with('category_name', $category_name);
 	}
 
 	public function get_add($parent)
@@ -62,7 +72,7 @@ class Admin_Categories_Controller extends Admin_Controller {
 		$category->parent = Input::get('parent');
 		$category->save();
 		return
-			Redirect::to('admin/categories/all')
+			Redirect::to_action('admin.categories@list', array($category->parent))
 			->with('flash', true)
 			->with('flash_type', 'success')
 			->with('flash_msg', 'New category created successfully.');
