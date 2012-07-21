@@ -26,6 +26,7 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="{{ URL::to_action('admin.categories@list') }}" title="Layouts">Layouts</a></li>
+						<li><a href="{{ URL::to_action('admin.categories@list') }}" title="Navigation">Navigation</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">

@@ -16,50 +16,35 @@ class Admin_Categories_Controller extends Admin_Controller {
 	public function get_view($id)
 	{
 		$category = Category::find($id);
-		$this->layout->page_title		= "Admin - Categories - View";
-		$this->layout->page_content	= View::make('admin.categories.view')->with('category', $category);
+		$this->layout->page_title   = "Admin - Categories - View";
+		$this->layout->page_content = View::make('admin.categories.view')->with('category', $category);
 	}
 
 	public function get_all()
 	{
 		$categories = Category::get();
-		$this->layout->page_title		= "Category Management";
-		$this->layout->page_content	= View::make('admin.categories.all')
+		$this->layout->page_title   = "Category Management";
+		$this->layout->page_content = View::make('admin.categories.all')
 		->with('categories', $categories)
 		->with('parent', 0);
 	}
 
 	public function get_list($id = 0)
 	{
-		$categories = Category::where('parent', '=', $id)->get();
-		$grandparent = NULL;
-		$grandparent_name = NULL;
-		$category_name = "Top";
-		if ($id)
-		{
-			$category = Category::find($id);
-			$grandparent = $category->parent != 0 ?: NULL;
-			if ($grandparent != 0)
-			{
-				$grandparent_name = Category::find($grandparent)->name;
-			}
-			$category_name = $category->name;
-		}
+		$breadcrumbs = Breadcrumbs::get($id);
+		$categories = $id ? Category::find($id)->children : Category::where('parent', '=', 0)->get();
 		
-		$this->layout->page_title		= "Admin - Categories - List";
-		$this->layout->page_content	= View::make('admin.categories.list')
-		
-		->with('categories', $categories)
-		->with('parent', $id)
-		->with('grandparent', $grandparent)
-		->with('grandparent_name', $grandparent_name)
-		->with('category_name', $category_name);
+		$this->layout->page_title   = "Admin - Categories - List";
+		$this->layout->page_content = View::make('admin.categories.list')
+			->with('id', $id)
+			->with('breadcrumbs', $breadcrumbs)
+			->with('categories', $categories);
 	}
 
 	public function get_add($parent)
 	{
-		$this->layout->page_title		= "Admin - Add Category";
-		$this->layout->page_content	= View::make('admin.categories.add')
+		$this->layout->page_title   = "Admin - Add Category";
+		$this->layout->page_content = View::make('admin.categories.add')
 		->with('parent', $parent);
 	}
 
@@ -81,8 +66,8 @@ class Admin_Categories_Controller extends Admin_Controller {
 	public function get_edit($id)
 	{
 		$category = Category::find($id);
-		$this->layout->page_title		= "Admin - Edit Category";
-		$this->layout->page_content	= View::make('admin.categories.edit')->with('category', $category);
+		$this->layout->page_title   = "Admin - Edit Category";
+		$this->layout->page_content = View::make('admin.categories.edit')->with('category', $category);
 	}
 
 	public function post_edit()
