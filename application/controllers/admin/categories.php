@@ -25,27 +25,29 @@ class Admin_Categories_Controller extends Admin_Controller {
 		$categories = Category::get();
 		$this->layout->page_title   = "Category Management";
 		$this->layout->page_content = View::make('admin.categories.all')
-		->with('categories', $categories)
-		->with('parent', 0);
+			->with('categories', $categories)
+			->with('parent', 0);
 	}
 
 	public function get_list($id = 0)
 	{
 		$breadcrumbs = Breadcrumbs::get($id);
 		$categories = $id ? Category::find($id)->children : Category::where('parent', '=', 0)->get();
+		$products = $id ? Category::find($id)->products : array();
 		
 		$this->layout->page_title   = "Admin - Categories - List";
 		$this->layout->page_content = View::make('admin.categories.list')
 			->with('id', $id)
 			->with('breadcrumbs', $breadcrumbs)
-			->with('categories', $categories);
+			->with('categories', $categories)
+			->with('products', $products);
 	}
 
 	public function get_add($parent)
 	{
 		$this->layout->page_title   = "Admin - Add Category";
 		$this->layout->page_content = View::make('admin.categories.add')
-		->with('parent', $parent);
+			->with('parent', $parent);
 	}
 
 	public function post_add()

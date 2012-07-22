@@ -9,4 +9,9 @@ class Category extends Eloquent {
 		return $this->has_many('Category', 'parent');
 	}
 	
+	public function products()
+	{
+		return $this->has_many_and_belongs_to('Product');
+	}
+	
 }

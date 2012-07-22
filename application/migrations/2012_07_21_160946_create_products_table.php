@@ -1,6 +1,6 @@
 <?php
 
-class Create_Categories_Table {
+class Create_Products_Table {
 
 	/**
 	 * Make changes to the database.
@@ -9,10 +9,10 @@ class Create_Categories_Table {
 	 */
 	public function up()
 	{
-		Schema::create('categories', function($table) {
+		Schema::create('products', function($table) {
 			$table->increments('id');
-			$table->integer('parent');
 			$table->string('name', 128);
+			$table->string('display_name', 128);
 			$table->string('slug', 128);
 			$table->integer('order');
 			$table->boolean('status');
@@ -25,13 +25,14 @@ class Create_Categories_Table {
 			$table->timestamps();
 		});
 
-		DB::table('categories')->insert(array(
-			'name'              => 'My Category',
-			'slug'              => Str::slug('My Category', '_'),
+		DB::table('products')->insert(array(
+			'name'              => 'My Item',
+			'display_name'      => 'My Item',
+			'slug'              => Str::slug('My Item', '_'),
 			'order'             => '1',
 			'status'            => '1',
-			'short_description' => 'This is my category',
-			'full_description'  => 'This is my category and some additional details',
+			'short_description'	=> 'This is my item',
+			'full_description'	=> 'This is my item and some additional details',
 		));
 	}
 
@@ -42,7 +43,7 @@ class Create_Categories_Table {
 	 */
 	public function down()
 	{
-		Schema::drop('categories');
+		Schema::drop('products');
 	}
 
 }
