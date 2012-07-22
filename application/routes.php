@@ -8,9 +8,10 @@ Route::get('admin', 'admin.auth@login');
 Route::get('admin/dashboard', 'admin.dashboard@index');
 Route::controller('admin.auth');
 Route::controller('admin.categories');
-Route::controller('admin.products');
 Route::controller('admin.dashboard');
 Route::controller('admin.items');
+Route::controller('admin.menus');
+Route::controller('admin.products');
 Route::controller('admin.users');
 
 

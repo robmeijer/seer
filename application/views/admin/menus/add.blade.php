@@ -3,10 +3,10 @@
 	<div class="span12">
 		{{ render('partials.flashmsg') }}
 		
-		<h1>Add Category</h1>
+		<h1>Add Menu</h1>
 		<em>Please supply the following information.</em>
 		<hr>
-		{{ Form::open('admin/categories/add', 'POST', array('class' => 'form-horizontal')) }}
+		{{ Form::open('admin/menus/add', 'POST', array('class' => 'form-horizontal')) }}
 		<div class="well">
 			<div class="control-group">
 				{{ Form::label('name', 'Name', array('class' => 'control-label')) }}
@@ -15,15 +15,14 @@
 				</div>
 			</div>
 			<div class="control-group">
-				{{ Form::label('short_description', 'Short description', array('class' => 'control-label')) }}
+				{{ Form::label('default', 'Default', array('class' => 'control-label')) }}
 				<div class="controls">
-					{{ Form::textarea('short_description', Input::old('short_description'), array('placeholder' => 'Short description')) }}
+					{{ Form::checkbox('default', '1') }}
 				</div>
 			</div>
 		</div>
-		{{ Form::hidden('parent', $parent) }}
 		{{ Form::button('Save', array('class' => 'btn btn-primary', 'type' => 'submit')) }}
-		<a href="{{ URL::to_action('admin.categories@list') }}" class="btn" title="Cancel">Cancel</a>
+		<a href="{{ URL::to_action('admin.menus@all') }}" class="btn" title="Cancel">Cancel</a>
 		{{ Form::close() }}
 	</div>
 </div>
