@@ -22,7 +22,7 @@
 				<div class="control-group">
 			<div class="controls">
 				{{ Form::button('Save Changes', array('class' => 'btn btn-primary', 'type' => 'submit')) }}
-				<a href="{{ URL::to_action('admin.product@view', array($product->id)) }}" class="btn" title="Cancel">Cancel</a>
+				<a href="{{ URL::to_action('admin.products@view', array($product->id)) }}" class="btn" title="Cancel">Cancel</a>
 			</div>
 		</div>
 		{{ Form::hidden('id', $product->id) }}
