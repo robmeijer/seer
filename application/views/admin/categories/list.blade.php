@@ -75,6 +75,7 @@
 
 	<div class="span7">
 		<h3>Products</h3>
+		<em>Manage products in this category.</em>
 		<a class="btn btn-primary pull-right" href="{{ URL::to_action('admin.products@add', array($id)) }}" title="Add Product"><i class="icon-plus-sign icon-white"></i> Add Product</a>
 		<hr>
 		<table class="table table-striped table-bordered">
@@ -83,7 +84,7 @@
 			@foreach ($products as $product)
 			<tr>
 				<td>
-					<a href="{{ URL::to_action('admin.categories@list', array($product->id)) }}" title="View product">{{ $product->name }}</a>
+					<a href="{{ URL::to_action('admin.products@view', array($product->id)) }}" title="View product">{{ $product->name }}</a>
 				<div id="prod-{{ $product->id }}" class="collapse">
 					<hr>
 					{{ $product->short_description }}
