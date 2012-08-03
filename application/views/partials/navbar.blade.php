@@ -57,8 +57,8 @@
 			</ul>
 			@if (Auth::check())
 			<div class="btn-group pull-right">
-				<a href="#" data-toggle="dropdown" class="btn dropdown-toggle">
-					<i class="icon-user"></i> {{ Auth::user()->firstname.' '.Auth::user()->surname }}
+				<a href="#" data-toggle="dropdown" class="btn dropdown-toggle btn-info">
+					<i class="icon-user icon-white"></i> {{ Auth::user()->firstname.' '.Auth::user()->surname }}
 					<span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu">
